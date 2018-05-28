@@ -1,49 +1,34 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link'
-import Img from 'gatsby-image'
+import React from 'react'
 import Helmet from 'react-helmet'
+import CategoryNav from '../components/CategoryNav'
+import GalleryList from '../components/GalleryList'
 
-const Galleries = ({data}) => {
+const Galleries = ({ data }) => {
+  const posts = data.allContentfulGallery.edges
 
-const posts = data.allContentfulGallery.edges;
-
-  return(
+  return (
     <div>
-
       <Helmet>
         <title>All Galleries - KNW Photography</title>
-        <meta name="description" content="View all galleries by KNW Photography" />
-        <meta property="og:title" content="All Galleries - KNW Photography"/>
-        <meta property="og:description" content="View all galleries by KNW Photography" />
+        <meta
+          name="description"
+          content="View all galleries by KNW Photography"
+        />
+        <meta property="og:title" content="All Galleries - KNW Photography" />
+        <meta
+          property="og:description"
+          content="View all galleries by KNW Photography"
+        />
         <meta property="og:image" content={posts[0].node.cover.sizes.src} />
         <meta property="og:image:width" content="1800" />
         <meta property="og:image:height" content="1200" />
         <meta property="og:url" content="https://www.knw.io/galleries/" />
       </Helmet>
 
-      <div className="category-navigation">
-        <h2>Galleries</h2>
-        <ul className="category-navigation__links">
-          <li><Link to="/galleries/" className="active">All</Link></li>
-          <li><Link to="/lifestyle/">Lifestyle</Link></li>
-          <li><Link to="/wedding/">Wedding</Link></li>
-        </ul>
-      </div>
-
-      <ul className="galleries-list">
-        {posts.map(({ node: post, index }) => (
-          <li key={post.id}>
-            <Link to={"/" + post.slug + "/"}>
-              <Img sizes={post.cover.sizes} alt={post.cover.title} title={post.cover.title} backgroundColor={"#f1f1f1"} />
-              <h3>view gallery</h3>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
+      <CategoryNav />
+      <GalleryList posts={posts} />
     </div>
   )
-
 }
 
 export const query = graphql`

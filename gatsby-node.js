@@ -1,8 +1,6 @@
-const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-
   // Redirects
   const { createRedirect } = boundActionCreators
 
@@ -14,7 +12,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     { f: `/pricing/wedding`, t: `/investment/` },
   ]
 
-  for (var { f: f, t: t } of redirectBatch1) {
+  for (var { f, t } of redirectBatch1) {
     createRedirect({
       fromPath: f,
       redirectInBrowser: true,
@@ -22,9 +20,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     })
   }
 
-  // Create Post Pages based on post.js template
   const { createPage } = boundActionCreators
-  return new Promise((resolve, reject) => {
+  const loadGalleries = new Promise((resolve, reject) => {
     graphql(`
       {
         allContentfulGallery {
@@ -38,15 +35,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     `).then(result => {
       result.data.allContentfulGallery.edges.map(({ node }) => {
         createPage({
-          path: node.slug,
+          path: `${node.slug}/`,
           component: path.resolve(`./src/templates/post.js`),
           context: {
-            slug: node.slug
-          }
+            slug: node.slug,
+          },
         })
       })
-
       resolve()
     })
   })
+
+  return Promise.all([loadGalleries])
 }
