@@ -233,6 +233,11 @@ const Social = styled.div`
   li {
     display: inline-block;
     margin: 0 1em 0 -0.5em;
+    &:first-child {
+      svg {
+        margin: 0 -0.1em 0 0;
+      }
+    }
   }
   svg {
     fill: ${props => props.theme.colors.base};

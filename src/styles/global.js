@@ -364,6 +364,24 @@ injectGlobal`
     }
   }
 
+
+  /* React Date Picker */
+.react-datepicker__day--keyboard-selected, .react-datepicker__day--selected {
+  background: #3e3e3e !important;
+}
+.react-datepicker {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+//Form Message
+.form__message {
+  font-size: 1em;
+  resize: none;
+  overflow: auto;
+  height: 300px;
+  flex: 0 0 100% !important;
+}
+
   /* Headroom */
   .headroom {
     cursor: pointer;
