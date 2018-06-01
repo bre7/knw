@@ -34,7 +34,9 @@ const TemplateWrapper = ({ children, location }) => (
         <meta property="og:url" content="https://www.knw.io" />
       </Helmet>
       <Menu />
-      {children()}
+      <div className="siteContent">
+        {children()}
+      </div>
       <Footer />
     </div>
   </ThemeProvider>

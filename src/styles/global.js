@@ -53,6 +53,15 @@ injectGlobal`
   }
 
   /* Site Specific Globals */
+  html,
+  body {
+    height: 100%;
+  }
+
+  .siteContent {
+    min-height: 100vh;
+  }
+
   body {
     background: white;
     color: #3E3E3E;
