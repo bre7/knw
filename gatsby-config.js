@@ -28,19 +28,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-remark',
     'gatsby-plugin-styled-components',
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: 'KNW Photography',
-        short_name: 'KNW Photography',
-        start_url: '/',
-        background_color: '#f1f1f1',
-        theme_color: '#ffffff',
-        display: 'minimal-ui',
-        icon: 'static/logos/logo-512.png', // This path is relative to the root of the site.
-      },
-    },
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-remove-serviceworker',
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
