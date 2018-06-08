@@ -48,7 +48,7 @@ const PageIntro = props => (
       sizes={props.image.sizes}
       alt={props.image.title}
       title={props.image.title}
-      backgroundColor={'#f1f1f1'}
+      backgroundColor={'#e4e4e4'}
     />
     {props.title && <Title>{props.title}</Title>}
   </Wrapper>
